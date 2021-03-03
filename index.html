@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>首页</title>
+        <script src="js/jquery.min.js"></script> 
+        <script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/basic-echarts-graph-js/template.js" type="text/javascript" ></script>
+        <!-- <script type="text/javascript" src="js/basic-echarts-graph-js/terminals-bar-online-status-in-7day.js"></script> -->
+    </head>
+    <body>
+        <!--统计图 -->
+        <div class="row">
+            <div id="main" style="width: 900px; height: 350px;  margin-top:80px;"></div>
+            <script type="text/javascript">
+                var  chart = echarts.init(document.getElementById('main'));
+                console.log('---------------------Echarts Version：',echarts.version);
+                console.log('---------------------jQuery Version：',jQuery.fn.jquery);
+                console.log('---------------------jQuery Version：',$.fn.jquery);
+                console.log('---------------------jQuery Version：',$.prototype.jquery);
+                console.log('--------------------------------------');
+                /*接受自定义Option.js中的函数返回的：option*/
+                var yqyOption=currentChartOption(chart);                
+            </script>
+        </div>
+    </body>
+
+
+</html>
