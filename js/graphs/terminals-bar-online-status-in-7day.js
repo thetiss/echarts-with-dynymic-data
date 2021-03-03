@@ -1,17 +1,4 @@
-/*
- * @Author: hiyan 
- * @Date: 2021-03-03 15:00:01 
- * @Last Modified by: hiyan
- * @Last Modified time: 2021-03-03 15:37:46
- */
-
-// 基于准备好的dom，初始化echarts实例
-// var bloodChart = echarts.init(document.getElementById('main'));
-// 指定图表的配置项和数据
-
-
-function currentChartOption(chart){
-    $.ajax({
+$.ajax({
     url: "http://localhost/ebbs-ck-api/EBTOnlineForSevenDaysViaNum",
     data: {},
     type: 'GET',
@@ -20,13 +7,22 @@ function currentChartOption(chart){
         bloodFun(data);
 
     },
-}); 
-    function bloodFun(data) {
+});
+// 基于准备好的dom，初始化echarts实例
+var bloodChart = echarts.init(document.getElementById('main'));
+
+const echartsVersion = echarts.version;
+debugger;
+
+// console.log('---------------------Echarts Version',echarts.version);
+// 指定图表的配置项和数据
+function bloodFun(data) {
     //X轴数值
     var X = (function() {
         var lineX = [];
         data.forEach(function(item, index) {
             lineX[index] = item.name;
+            debugger;
         }) 
         return lineX;
     })();
@@ -38,7 +34,7 @@ function currentChartOption(chart){
         }) 
         return lineY;
     })();
-    chart.setOption( {
+    bloodChart.setOption({
         //backgroundColor: '#00265f',
         //backgroundColor: 'rgba(1,202,217,.1)',
         backgroundColor: 'rgba(0,0,0,0)',
@@ -166,7 +162,5 @@ function currentChartOption(chart){
                 }
             }
         }]
-    }) // 结束定义option
-    
-    }
+    });
 }
