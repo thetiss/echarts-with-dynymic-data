@@ -1,3 +1,3 @@
 # echarts-with-dynymic-data
 
-![image-20210303153104377](C:\Users\chenh\AppData\Roaming\Typora\typora-user-images\image-20210303153104377.png)
+![image-20210303153104377](C:\99work\0 项目应急广播\20201109 Grafana to echarts\ck\img\image-20210303153104377.png)
