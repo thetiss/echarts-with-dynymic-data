@@ -1,8 +1,8 @@
 /*
  * @Author: hiyan 
  * @Date: 2021-03-03 15:00:01 
- * @Last Modified by:   hiyan 
- * @Last Modified time: 2021-03-03 15:00:01 
+ * @Last Modified by: hiyan
+ * @Last Modified time: 2021-03-03 15:37:46
  */
 
 // 基于准备好的dom，初始化echarts实例
@@ -12,7 +12,7 @@
 
 function currentChartOption(chart){
     $.ajax({
-    url: "http://125.62.27.152/ebbs-ck-api/EBTOnlineForSevenDaysViaNum",
+    url: "http://localhost/ebbs-ck-api/EBTOnlineForSevenDaysViaNum",
     data: {},
     type: 'GET',
     success: function(data) {

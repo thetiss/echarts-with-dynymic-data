@@ -1,5 +1,5 @@
 $.ajax({
-    url: "http://125.62.27.152/ebbs-ck-api/EBTOnlineForSevenDaysViaNum",
+    url: "http://localhost/ebbs-ck-api/EBTOnlineForSevenDaysViaNum",
     data: {},
     type: 'GET',
     success: function(data) {

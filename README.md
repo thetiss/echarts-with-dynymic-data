@@ -1,3 +1,8 @@
 # echarts-with-dynymic-data
 
-![image-20210303153104377](C:\99work\0 项目应急广播\20201109 Grafana to echarts\ck\img\image-20210303153104377.png)
+截图可看：
+
+## [echarts-with-dynymic-data](https://github.com/thetiss/echarts-with-dynymic-data)/[img](https://github.com/thetiss/echarts-with-dynymic-data/tree/main/img)/**sc1.png**
+
+
+
