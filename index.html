@@ -4,20 +4,33 @@
         <meta charset="UTF-8">
         <title>首页</title>
         <script src="js/jquery.min.js"></script> 
-        <script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/graphs/template.js" type="text/javascript" ></script>
+        <!-- <script src="js/jquery-3.1.0.min.js"></script>  -->
+        <script src="js/echarts.min.js"></script>
+        <script src="js/charts/terminal-online-in-7days-by-num.js"></script>
+        <script src="js/charts/terminal-online-in-7days-by-percent.js"></script>
+        <script src="js/charts/terminal-online-in-regions-by-num.js"></script>
+        <script src="js/charts/terminal-online-current-month-by-num.js"></script> 
+        <script src="js/charts//terminal-online-in-transMedia.js"></script> 
+        
     </head>
-    <body>
-        <!--统计图 -->
+    <body onload="init()">
         <div class="row">
-            <div id="main" style="width: 900px; height: 350px;  margin-top:80px;"></div>
-            <script type="text/javascript">
-                const Container = echarts.init(document.getElementById('main'));
-                /*接受自定义Option.js中的函数返回的：option*/
-                const chart=renderChart(Container);
+            <div id="inTransMedia" style="width: 900px; height: 350px;  margin-top:80px;"></div>
+            <!-- <div id="currentMonthByNum" style="width: 900px; height: 350px;  margin-top:80px;"></div> -->
+            <!-- <div id="sevenDaysByNum" style="width: 900px; height: 450px;  margin-top:80px;"></div>
+            <div id="sevenDaysByPer" style="width: 900px; height: 350px;  margin-top:80px;"></div>
+            <div id="regionsByNum" style="width: 900px; height: 350px;  margin-top:80px;"></div> -->
+            <!-- debug用 -->
+            <script type="text/javascript">    
+                function init() {
+                    renderInTransMediaByNumChart('inTransMedia')
+                    // renderCurrentMonthByNumChart('currentMonthByNum');
+                    // renderSevenDaysByPerChart('sevenDaysByNum');
+                    // renderSevenDaysByNumChart('sevenDaysByPer');
+                    // renderRegionsByNumChart('regionsByNum');
+                    // debug用
+                }
             </script>
         </div>
     </body>
-
-
 </html>

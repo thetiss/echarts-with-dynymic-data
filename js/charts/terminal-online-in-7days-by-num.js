@@ -1,47 +1,39 @@
-$.ajax({
-    url: "http://localhost/ebbs-ck-api/EBTOnlineForSevenDaysViaNum",
-    data: {},
-    type: 'GET',
-    success: function(data) {
-        console.log(JSON.stringify(data)) 
-        bloodFun(data);
+/*
+ * @Author: hiyan 
+ * @Date: 2021-03-03 15:00:01 
+ * @Last Modified by: hiyan
+ * @Last Modified time: 2021-03-09 13:45:24
+ */
 
-    },
-});
-// 基于准备好的dom，初始化echarts实例
-var bloodChart = echarts.init(document.getElementById('main'));
+// return： 图表， params: div.id
+function renderSevenDaysByNumChart(containerId) { 
+    const chart = echarts.init(document.getElementById('sevenDaysByNum'));
+    // 异步加载后端接口数据
+    $.ajax({
+        url: "http://localhost/ebbs-ck-api/EBTOnlineForSevenDaysViaNum",
+        data: {},
+        type: 'GET',
+        success: function (data) {            
+            console.log(JSON.stringify(data));
+            drawChart(data);  
+        }
+    });
 
-const echartsVersion = echarts.version;
-debugger;
-
-// console.log('---------------------Echarts Version',echarts.version);
-// 指定图表的配置项和数据
-function bloodFun(data) {
-    //X轴数值
-    var X = (function() {
-        var lineX = [];
-        data.forEach(function(item, index) {
-            lineX[index] = item.name;
-            debugger;
-        }) 
-        return lineX;
-    })();
-    //Y轴数值
-    var Y = (function() {
-        var lineY = [];
-        data.forEach(function(item, index) {
-            lineY[index] = item.value;
-        }) 
-        return lineY;
-    })();
-    bloodChart.setOption({
-        //backgroundColor: '#00265f',
-        //backgroundColor: 'rgba(1,202,217,.1)',
-        backgroundColor: 'rgba(0,0,0,0)',
-
-        /*title: {
-    text: '用电单位为:度 '
-    },*/
+    // 根据option中配置，处理X、Y轴，图形数据
+    let xAxisData = [];
+    let yAxisData = [];
+    let chartData = [];
+    function constructOptionData(data) {        
+        for (let [index, item] of data.entries()) {
+            xAxisData[index] = item.name;            
+            chartData[index] = item.value;
+        }    
+    }
+    
+    // 配置echarts.option对象
+    const option =  {
+        backgroundColor: '#00265f',
+        // backgroundColor: 'rgba(0,0,0,0)',
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -50,22 +42,18 @@ function bloodFun(data) {
         },
         grid: {
             top: '25%',
-            //调整图形整体
             right: '1%',
             left: '6%',
             bottom: '12%'
         },
         xAxis: [{
             type: 'category',
-            data: X,
+            data: xAxisData,
             axisLine: {
-                show: false,
-                lineStyle: {
-                    color: 'rgba(255,255,255,0.12)'
-                }
+                show: false
             },
             axisTick: {
-                show: false,
+                show: false
             },
             axisLabel: {
                 margin: 5,
@@ -75,15 +63,11 @@ function bloodFun(data) {
                     fontSize: 10
                 },
                 formatter: function(value, index) {
-                    // 格式化成月/日，只在第一个刻度显示年份
+                    // 格式化成 X月/Y日，只在第一个刻度显示年份
                     var date = new Date(value);
-                    //console.log(date+"_________________date_____________________");//打印Wed Nov 04 2020 08:00:00 GMT+0800
                     var texts = [(date.getMonth() + 1), date.getDate()];
-                    //console.log(texts+"____________________month+1,date__________________");//打印11,4
                     if (index === 0) {
                         texts.unshift(date.getFullYear());
-                        //console.log(date.getFullYear()+"_______________year_______________________");
-                        //console.log(texts.unshift(date.getFullYear())+"_______________unshift_______________________");
                     }
                     return texts.join('/');
                 }
@@ -92,24 +76,21 @@ function bloodFun(data) {
         yAxis: [{
             axisLabel: {
                 formatter: '{value}',
-                color: '#e2e9ff',
+                color: '#e2e9ff'
             },
             axisLine: {
-                show: false,
+                show: false
             },
             axisTick: {
-                show: false,
+                show: false
             },
             splitLine: {
-                show: false,
-                lineStyle: {
-                    color: 'rgba(255,255,255,0.12)'
-                }
+                show: false
             }
         }],
         series: [{
             type: 'bar',
-            data: Y,
+            data: chartData,
             barWidth: '21px',
             itemStyle: {
                 normal: {
@@ -134,7 +115,6 @@ function bloodFun(data) {
                     width: 55,
                     //调整label背景块宽度
                     height: 20,
-                    // padding: [0, 4, 5, 6],
                     backgroundColor: 'rgba(0,160,221,0.1)',
                     borderRadius: 100,
                     position: ['-10', '-30'],
@@ -144,7 +124,6 @@ function bloodFun(data) {
                     rich: {
                         d: {
                             color: '#3CDDCF',
-                            //align: 'left',
                         },
                         a: {
                             color: '#fff',
@@ -162,5 +141,10 @@ function bloodFun(data) {
                 }
             }
         }]
-    });
+    };
+    
+    function drawChart(data) {
+        constructOptionData(data);
+        chart.setOption(option);
+    }
 }
