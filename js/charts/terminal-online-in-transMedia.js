@@ -2,7 +2,7 @@
  * @Author: hiyan 
  * @Date: 2021-03-04 13:49:11 
  * @Last Modified by: hiyan
- * @Last Modified time: 2021-03-09 13:45:10
+ * @Last Modified time: 2021-03-10 10:44:53
  */
 function renderInTransMediaByNumChart(containerId) {
     const chart = echarts.init(document.getElementById('inTransMedia'));
@@ -179,6 +179,8 @@ function renderInTransMediaByNumChart(containerId) {
 
     function drawChart(data) {
         constructOptionData(data);
+        let optionWithData = option;
+        debugger;
         chart.setOption(option);
     }
 }

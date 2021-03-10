@@ -2,11 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>首页</title>
+        <title>城口大屏</title>
         <script src="js/jquery.min.js"></script> 
+        <!-- <script src="js/jquery-3.1.0.min.js"></script>  -->
         <script src="js/echarts.min.js"></script>
-        <script src="js/echarts-liquidfill.min.js"></script>
-        <script src="js/charts/EBM-types-by-percent.js"></script>        
+        <script src="js/charts/terminal-online-in-7days-by-num.js"></script>
+        <script src="js/charts/terminal-online-in-7days-by-percent.js"></script>
+        <script src="js/charts/terminal-online-in-regions-by-num.js"></script>
+        <script src="js/charts/terminal-online-current-month-by-num.js"></script> 
+        <script src="js/charts//terminal-online-in-transMedia.js"></script> 
+        
     </head>
     <body onload="init()">
         <div class="row">
@@ -18,7 +23,7 @@
             <!-- debug用 -->
             <script type="text/javascript">    
                 function init() {
-                    renderInTransMediaByNumChart('inTransMedia');
+                    renderInTransMediaByNumChart('inTransMedia')
                     // renderCurrentMonthByNumChart('currentMonthByNum');
                     // renderSevenDaysByPerChart('sevenDaysByNum');
                     // renderSevenDaysByNumChart('sevenDaysByPer');
